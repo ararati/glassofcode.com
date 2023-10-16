@@ -1,0 +1,14 @@
+---
+layout: layouts/home.njk
+eleventyNavigation:
+  key: Posts
+  order: 2
+eleventyComputed:
+  title: All Posts
+---
+<div class="rounded bg-white p-8">
+	<h1 class="m-0 background-text light-text">Posts</h1>
+
+	{% set postslist = collections.posts %}
+	{% include "postslist.njk" %}
+</div>

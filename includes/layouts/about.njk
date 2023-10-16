@@ -1,0 +1,22 @@
+---
+layout: layouts/base.njk
+eleventyComputed:
+  title: Contact
+---
+<script>
+	const replaceEmailTemplate = () => {
+		const username = "{{ metadata.author.email.username }}", provider = "{{ metadata.author.email.provider }}";
+		const address = `${username}${provider}`;
+		const emailTemplateVariable = '--email-link--';
+		const emailHtmlLink = `<a href="mailto:${address}">${address}</a>`;
+		const contactInfoElement = document.getElementById('contact-info');
+		contactInfoElement.innerHTML = contactInfoElement.innerHTML.replace(emailTemplateVariable, emailHtmlLink);
+	}
+	document.addEventListener('DOMContentLoaded', replaceEmailTemplate);
+</script>
+<div class="p-8 bg max-w-2xl center-block bg-white rounded">
+	<h1 class="m-0 pt-0 background-text light-text">Contact</h1>
+	<div id="contact-info">
+		{{ content | safe }}
+	</div>
+</div>

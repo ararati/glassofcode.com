@@ -1,0 +1,81 @@
+<!doctype html>
+<html
+	lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{ title or metadata.title }}</title>
+	<meta name="description" content="{{ description or metadata.description }}">
+	<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
+	<link rel="alternate" href="/feed/feed.json" type="application/json" title="{{ metadata.title }}">
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="theme-color" content="#ffffff">
+
+	{#-
+	CSS bundles are provided via the `eleventy-plugin-bundle` plugin:
+	1. You can add to them using `{% css %}`
+	2. You can get from them using `{% getBundle "css" %}` or `{% getBundleFileUrl "css" %}`
+	3. You can do the same for JS: {% js %}{% endjs %} and <script>{% getBundle "js" %}</script>
+	4. Learn more: https://github.com/11ty/eleventy-plugin-bundle
+	#}
+	{#    {% js %}{% endjs %} and <script>{% getBundle "js" %}</script> #}
+	{%- js %}{% include "static/js/index.js" %}{% endjs %}
+	{#- Add the contents of a file to the bundle #}
+	{%- css %}{% include "static/css/index.css" %}{% endcss %}
+	{#- Or add from node_modules #}
+	{# {%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %} #}
+
+	{#- Render the CSS bundle using Inlined CSS (for the fastest site performance in production) #}
+	{#	<style>{% getBundle "css" %}</style>#}
+	{#	<script>{% getBundle "js" %}</script>#}
+	{#- Renders the CSS bundle using a separate file, if you can't set CSP directive style-src: 'unsafe-inline' #}
+	<link rel="stylesheet" href="{% getBundleFileUrl "css" %}">
+{#	<link href="https://fonts.cdnfonts.com/css/mona-sans?styles=144353,144355,144321,144323,144325,144327"#}
+{#				rel="stylesheet">#}
+
+</head>
+<body>
+{% edge "njk" %}
+	<h1>123</h1>
+	{{ "sa" | json }}
+{% endedge %}
+<a href="#skip" class="visually-hidden">Skip to main content</a>
+
+<header class="max-w-2xl center-block header-container bg-white mb-6 mt-6 rounded">
+	<div class="header-logo-container">
+		<a href="/" class="home-link header-logo-text">
+			<div class="header-logo-image"></div>
+			<span>of code</span>
+		</a>
+	</div>
+
+	<nav>
+		<h2 class="visually-hidden">Top level navigation menu</h2>
+		<ul class="nav">
+			{%- for entry in collections.all | eleventyNavigation %}
+				<li class="nav-item"><a
+						href="{{ entry.url }}"{% if entry.url == page.url %} aria-current="page"{% endif %}>{{ entry.title }}</a>
+				</li>
+			{%- endfor %}
+		</ul>
+	</nav>
+</header>
+
+<main id="skip">
+	{{ content | safe }}
+</main>
+
+<footer>
+	<div class="text-center color-gray text-xs p-6 copyright">
+		© 2022 {{ metadata.author.name }}
+	</div>
+</footer>
+<!-- Current page: {{ page.url | htmlBaseUrl }} -->
+</body>
+</html>

@@ -1,0 +1,18 @@
+---
+permalink: /tags/
+layout: layouts/home.njk
+eleventyNavigation:
+  key: Tags
+  order: 2
+eleventyComputed:
+  title: All Tags
+---
+<div class="bg-white p-8 rounded">
+	<h1 class="m-0 light-text">Tags</h1>
+	<ul>
+		{% for tag in collections.all | getAllTagsWithNumberOfPosts %}
+			{% set tagUrl %}/tags/{{ tag[0] | slugify }}/{% endset %}
+			<li><a href="{{ tagUrl }}" class="post-tag">{{ tag[0] }} - ({{ tag[1] }})</a></li>
+		{% endfor %}
+	</ul>
+</div>

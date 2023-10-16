@@ -1,0 +1,30 @@
+---
+layout: layouts/home.njk
+eleventyNavigation:
+key: Home
+order: 1
+numberOfLatestPostsToShow: 5
+eleventyComputed:
+	title: Glass of Code - programming, back-end systems, and a bit of gaming and front-end apps
+---
+<div class="flex flex-wrap bg-white rounded mb-6 home-greeting-container">
+	<div class="flex-1 p-8 flex-grow-2">
+		<h1 class="home-title pb-4 background-text light-text">Pouring Knowledge, One Line at a Time</h1>
+		<span
+			class="home-description">My Take on Programming, Back-End Systems, and a Bit of Gaming and Front-End Apps</span>
+	</div>
+	<div class="flex-1 home-logo"></div>
+</div>
+
+<div class="bg-white rounded p-8">
+	{% set postsCount = collections.posts | length %}
+	<h2 class="background-text light-text text-2xl m-0">Latest Posts</h2>
+
+	{% set postslist = collections.posts | head(-1 * numberOfLatestPostsToShow) %}
+	{% set postslistCounter = postsCount %}
+	{% include "postslist.njk" %}
+	<div class="show-more-btn">
+		<a href="/posts" class="">Show all posts</a>
+	</div>
+
+</div>
