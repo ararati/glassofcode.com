@@ -11,9 +11,9 @@ const cssMinifier = require("csso");
 
 module.exports = (eleventy) => {
 	eleventy.addPassthroughCopy({
-		"/static/": "/static/",
+		"static/": "/static/",
 		"./node_modules/prismjs/themes/prism-okaidia.css": "/css/prism-okaidia.css",
-		"/static/favicon": "/"
+		"static/favicon": "/"
 	});
 
 	eleventy.addWatchTarget("content/**/*.{svg,webp,png,jpeg}");
