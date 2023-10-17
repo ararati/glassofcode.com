@@ -7,12 +7,22 @@
 	<title>{{ title or metadata.title }}</title>
 	<meta name="description" content="{{ description or metadata.description }}">
 
+	<!-- GA -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-W5VPWZCP4V"></script>
 	<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-W5VPWZCP4V');</script>
 
+	<!-- Social -->
+	<meta property="og:title" content="{{ title or metadata.title }}">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="Glass of Code">
+	<meta property="og:description" content="{{ description or metadata.description }}">
+	<meta property="og:url" content="{{ metadata.url }}{{ page.url }}">
+
+	<!-- Feeds -->
 	<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
 	<link rel="alternate" href="/feed/feed.json" type="application/json" title="{{ metadata.title }}">
 
+	<!-- Icons -->
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -20,6 +30,7 @@
 	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 	<meta name="msapplication-TileColor" content="#da532c">
 	<meta name="theme-color" content="#ffffff">
+	<meta name="author" content="{{ metadata.author.name }}">
 
 	{#-
 	CSS bundles are provided via the `eleventy-plugin-bundle` plugin:

@@ -1,6 +1,6 @@
 module.exports = {
 	title: "Glass of Code",
-	url: "https://glassofcode.com/",
+	url: "https://glassofcode.com",
 	language: "en",
 	description: "Programming, Back-End Systems, and a Bit of Gaming and Front-End Apps",
 	author: {
