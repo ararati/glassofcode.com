@@ -1,7 +1,7 @@
 ---
 title: "Preventing memory leaks in JavaScript and NodeJS"
 description: "Why memory leaks occur in JavaScript and NodeJS and how to prevent them. Examples and practices for managing memory."
-date: 2023-10-02 12:00:00
+date: 2023-10-16 12:00:00
 tags:
   - JavaScript
   - NodeJS
