@@ -9,7 +9,7 @@ tags:
 ---
 Memory leaks are one of the most common issues in JavaScript applications. Let’s explore why and in which cases memory leaks can occur.
 
-## What is the memory leaks?
+## What is the memory leaking?
 It’s a state when the memory that was allocated for data continues to stay in program memory after finishing part of the code in which it was used, as a result, the allocated memory stays in memory forever and reduces the program performance.
 
 ## Why memory leaks occur?
@@ -41,7 +41,7 @@ const logUsageMemory = () => {
 ```
 
 ### Unused variable and reference
-Mostly JavaScript Garbage Collector can release an allocated memory for unused variables and references. Still, GC can’t do it when the variable’s reference is implicitly used somewhere. In this case each defined variable should be properly released.
+Mostly JavaScript Garbage Collector can release an allocated memory for unused variables and references. Still, GC can’t do it when the variable’s reference is implicitly used somewhere. In this case, each defined variable should be properly released.
 For instance, let’s run the following code with an unused variable:
 ```javascript
 logUsageMemory();
@@ -98,7 +98,7 @@ Why did I mention functions? Because in this case, the garbage collector will re
 However, I provided the next cases where memory leaks can still occur within a function.
 
 ### Global Variables
-Worth mentioning, that GC will not release memory for unused property of objects due to its use of the mark-and-sweep algorithm.
+Worth mentioning, that GC will not release memory for unused properties of objects due to its use of the mark-and-sweep algorithm.
 
 ```javascript
 const obj1 = { type: 1,  payload: new Array(10000000) };
@@ -108,7 +108,7 @@ setInterval(() => {
 }, 1000);
 ```
 
-That's why, if you set data to global scope, it always will be in global scope, because global scope is a JS object. In NodeJS global scope can be accessed from the variable global, and from the variable window in browsers.
+That's why, if you set data to global scope, it always will be in global scope, because the global scope is a JS object. In NodeJS global scope can be accessed from the variable global, and the variable window in browsers.
 
 ```javascript
 global.userPayload = { type: 1,  payload: new Array(10000000) };
@@ -148,7 +148,7 @@ setupListener();
 
 Pay attention, even if you remove the emitter object (customEventEmitter in the example) without removing the listener via removeListener, the listener won’t be removed.
 
-An example just with the front-end and registering listener via HTML element, even if element will be removed, the listeners continue to stay at memory:
+An example just with the front-end and registering listener via HTML element, even if the element will be removed, the listeners continue to stay in memory:
 ```javascript
 const data = { /* Large object */ };
 const eventListener = () => { console.log(data); }; // the variable captured in a closure,
@@ -160,7 +160,7 @@ element.addEventListener("customEvent", eventListener);
 ```
 
 ### Timers and Intervals
-The next obvious case of memory leaking is not removing the timers or intervals when work is done. Moreover, this kind of issue can be not only the reason of memory leaking but also leaking other resources, depepnds on your interval function.
+The next obvious case of memory leaking is not removing the timers or intervals when work is done. Moreover, this kind of issue can be not only the reason for memory leaking but also the leaking of other resources, depending on your function.
 ```javascript
 const intervalId = setInterval(intervalListener, 1000);
 // if you forget to call clearInterval(intervalId), function “intervalListener” keeps running
@@ -178,7 +178,7 @@ stream.on('data', (chunk) => { /* Do something with the data */ });
 ```
 
 ### Unclosed Network Connections
-Memory leaks with unclosed network connections in Node.js can occur when you open network sockets or connections, such as HTTP requests, but didn’t close them properly.
+Memory leaks with unclosed network connections in Node.js can occur when you open network sockets or connections, such as HTTP requests, but don’t close them properly.
 
 ```javascript
 const http = require('node:http');
@@ -197,7 +197,7 @@ const http = require('node:http');
 Understanding and addressing memory leaks in JavaScript applications is crucial for maintaining their performance and resource efficiency.
 By recognizing the various scenarios that can lead to memory leaks and taking proactive steps to mitigate them, you can ensure your applications run smoothly and efficiently, providing a better user experience and avoiding potential issues down the line.
 
-To prevent memory leaks in JavaScript applications, follow practices which I discussed above:
+To prevent memory leaks in JavaScript applications, follow the practices that I discussed above:
 - Clear unused variables and references.
 - Handle circular references carefully.
 - Manually remove global object properties.
