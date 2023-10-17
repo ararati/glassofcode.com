@@ -15,10 +15,10 @@ In this post, I’ll explore how application caching can increase application pe
 - Database caching
 - Application caching
 
-I will explore the last one, caching in the **application level**.\
-Worth mentioning, that any decision should be made relative to the needs, if you have an average application with an average load that handles the load perfectly, then adding another layer as a caching will only complicate the program code, because every piece of code has to be tested and supported.
+I will explore the last one, caching at the **application level**.\
+Worth mentioning, that any decision should be made relative to the needs, if you have an average application with an average load that handles the load perfectly, then adding another layer as a caching will only complicate the program code because every piece of code has to be tested and supported.
 
-## What is the caching and when to use
+## What is caching and when to use
 Caching is a process of storing final data separately in a separate memory, in this context,  by final data I mean the kind of data that should be calculated or that needs time to retrieve them. As a result of using caching, we just return the data stored in the cache bypassing all the time needed for calculation.\
 For example, the following reasons may increase data calculation time:
 - Network latency, if data is located on another host
@@ -61,10 +61,10 @@ const cache = (storage = new Map()) => ({
 module.exports = cache();
 ```
 
-The following libraries also solve this task, which also provide features such as expiration time, using external storage for cache, etc.
+The following libraries also solve this task, which also provides features such as expiration time, using external storage for cache, etc.
 ### node-cache library
 The [node-cache](https://github.com/node-cache/node-cache) library contains basic cache operation and supports expiration for keys.
-It works in a similar way to my example above
+It works similarly to my example above
 
 ```javascript
 const NodeCache = require( "node-cache" );
