@@ -1,7 +1,8 @@
 ---
-title: "Caching in backend: why, when, and how"
+title: "Caching in Backend: Why, When, and How"
 description: "Caching in backend and other systems, advantages, when, how and why to use it."
 date: 2023-10-15 12:00:00
+cover: /static/images/post/caching-in-backend.png
 tags:
   - Caching
   - NodeJS
