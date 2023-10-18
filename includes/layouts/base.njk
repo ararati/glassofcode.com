@@ -16,7 +16,10 @@
 	<meta property="og:type" content="website">
 	<meta property="og:site_name" content="Glass of Code">
 	<meta property="og:description" content="{{ description or metadata.description }}">
-	<meta property="og:url" content="{{ metadata.url }}{{ page.url }}">
+	<meta property="og:url" content="{{ page.url | htmlBaseUrl(metadata.url) }}">
+	{%- if cover %}
+		<meta property="og:image" content="{{ cover | htmlBaseUrl(metadata.url) }}"/>
+	{%- endif %}
 
 	<!-- Feeds -->
 	<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
@@ -56,10 +59,7 @@
 
 </head>
 <body>
-{% edge "njk" %}
-	<h1>123</h1>
-	{{ "sa" | json }}
-{% endedge %}
+
 <a href="#skip" class="visually-hidden">Skip to main content</a>
 
 <header class="max-w-2xl center-block header-container bg-white mb-6 mt-6 rounded">
