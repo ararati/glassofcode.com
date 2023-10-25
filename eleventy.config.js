@@ -133,6 +133,10 @@ module.exports = (eleventy) => {
 		return Array.from(tagSet);
 	});
 
+	eleventy.addFilter("stringify", (data) => {
+		return JSON.stringify(data, null, "\t")
+	});
+
 	eleventy.addFilter("filterTagList", function filterTagList(tags) {
 		return (tags || []).filter(tag => isUserTag(tag));
 	});
@@ -156,6 +160,9 @@ module.exports = (eleventy) => {
 			"njk",
 			"html",
 			"liquid",
+			"jpg",
+			"jpeg",
+			"png"
 		],
 		markdownTemplateEngine: "njk",
 		htmlTemplateEngine: "njk",
